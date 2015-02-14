@@ -15,7 +15,7 @@ GDB_CFLAGS = -ggdb -I ${LIB} -I ${LIB}/math -I ${GSLWRAP_LIB}/include	\
 
 BASE_INCLUDES = -I ${LIB}
 
-LDFLAGS = -L${LOCAL_DIR}/lib -L${LOCAL_DIR}/lib/stl -lgsl -lm -lgslcblas
+LDFLAGS = -L/usr/local/lib -L${LOCAL_DIR}/lib -lgsl -lm -lgslcblas
 LOBJECTS = ss-lm.o gsl-wrappers.o data.o param.o util.o lda-seq.o	\
   lda.o params.o main.o
 
