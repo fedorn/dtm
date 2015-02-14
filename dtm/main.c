@@ -254,6 +254,8 @@ int main(int argc, char* argv[]) {
 				table[t][d] = post.doc->log_likelihood;
 			}
 		}
+		free_lda_model(lda_model);
+
 		char tmp_string[400];
 		sprintf(tmp_string, "%s-heldout_post.dat", FLAGS_outname.c_str());
 		FILE* post_file = fopen(tmp_string, "w");

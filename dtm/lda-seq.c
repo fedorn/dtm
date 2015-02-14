@@ -1145,6 +1145,26 @@ lda_seq* new_lda_seq(corpus_seq_t* data, int W, int T, int K) {
 	return (model);
 }
 
+void free_lda_seq(lda_seq* model) {
+
+	int K = model->ntopics;
+	int W = model->nterms;
+	int T = model->nseq;
+
+	inf_var_free(model->influence);
+	for (int k = 0; k < K; k++) {
+		gsl_matrix_free(model->influence_sum_lgl[k]);
+		gsl_matrix_free(model->topic[k]->w_phi_l);
+		gsl_matrix_free(model->topic[k]->w_phi_sum);
+		gsl_matrix_free(model->topic[k]->w_phi_l_sq);
+	}
+	free(model->influence_sum_lgl);
+	free(model->topic);
+	gsl_vector_free(model->alpha);
+
+	free(model);
+}
+
 /*
  * initialize from sufficient statistics (expected counts).
  *
