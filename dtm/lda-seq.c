@@ -84,8 +84,23 @@ inf_var* inf_var_alloc(int number_topics, corpus_seq_t* corpus_seq) {
 	return inf_var_ptr;
 }
 
-void inf_var_free(inf_var* ptr) {
-	// TODO.
+void inf_var_free(inf_var* inf_var_ptr, corpus_seq_t* corpus_seq) {
+	delete scaled_influence;
+
+	int i = 0;
+	for (i = 0; i < corpus_seq->len; ++i) {
+		corpus_t* corpus = corpus_seq->corpus[i];
+		if (corpus->ndocs == 0) {
+			free(inf_var_ptr->doc_weights[i]);
+			free(inf_var_ptr->renormalized_doc_weights[i]);
+		} else {
+			gsl_matrix_free(inf_var_ptr->doc_weights[i]);
+			gsl_matrix_free(inf_var_ptr->renormalized_doc_weights[i]);
+		}
+	}
+	free(inf_var_ptr->renormalized_doc_weights);
+	free(inf_var_ptr->doc_weights);
+	free(inf_var_ptr);
 }
 
 // Solves the linear system Ax = b for x.
@@ -1145,13 +1160,13 @@ lda_seq* new_lda_seq(corpus_seq_t* data, int W, int T, int K) {
 	return (model);
 }
 
-void free_lda_seq(lda_seq* model) {
+void free_lda_seq(lda_seq* model, corpus_seq_t* data) {
 
 	int K = model->ntopics;
 	int W = model->nterms;
 	int T = model->nseq;
 
-	inf_var_free(model->influence);
+	inf_var_free(model->influence, data);
 	for (int k = 0; k < K; k++) {
 		gsl_matrix_free(model->influence_sum_lgl[k]);
 		gsl_matrix_free(model->topic[k]->w_phi_l);

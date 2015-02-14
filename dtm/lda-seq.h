@@ -90,6 +90,7 @@ void write_lda_seq_suffstats(lda_seq* m, gsl_matrix** topic_ss,
 // new lda sequence
 
 lda_seq* new_lda_seq(corpus_seq_t* data, int W, int T, int K);
+void free_lda_seq(lda_seq* model, corpus_seq_t* data);
 
 void make_lda_from_seq_slice(lda* lda_m, lda_seq* lda_seq_m, int time);
 
