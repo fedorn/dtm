@@ -149,6 +149,7 @@ void fit_dtm(int min_time, int max_time) {
 	post.log_phi = gsl_matrix_calloc(max_nterms, model_seq->ntopics);
 	post.gamma = gsl_vector_calloc(model_seq->ntopics);
 	post.lhood = gsl_vector_calloc(model_seq->ntopics);
+	free(model_seq);
 	post.model = lda_model;
 	post.doc_weight = NULL;
 
