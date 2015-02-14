@@ -46,22 +46,15 @@ void sslm_inference_alloc(sslm_var* var);
 void sslm_inference_free(sslm_var* var);
 
 // initialize with zero observations
-void sslm_zero_init(sslm_var* var,
-                    double obs_variance,
-                    double chain_variance);
+void sslm_zero_init(sslm_var* var, double obs_variance, double chain_variance);
 
 // initialize with counts
-void sslm_counts_init(sslm_var* var,
-                      double obs_variance,
-                      double chain_variance,
-                      const gsl_vector* counts);
+void sslm_counts_init(sslm_var* var, double obs_variance, double chain_variance,
+		const gsl_vector* counts);
 
 // initialize from variational observations
-void sslm_obs_file_init(sslm_var* var,
-                        double obs_variance,
-                        double chain_variance,
-                        const char* filename);
-
+void sslm_obs_file_init(sslm_var* var, double obs_variance,
+		double chain_variance, const char* filename);
 
 // compute E[\beta_{w,t}] for t = 1:T
 void compute_post_mean(int w, sslm_var* var, double chain_variance);
@@ -73,22 +66,18 @@ void compute_post_variance(int w, sslm_var* var, double chain_variance);
 void optimize_var_obs(sslm_var* var);
 
 // compute dE[\beta_{w,t}]/d\obs_{w,s} for t = 1:T
-void compute_mean_deriv(int word, int time, sslm_var* var,
-                        gsl_vector* deriv);
+void compute_mean_deriv(int word, int time, sslm_var* var, gsl_vector* deriv);
 
 // compute d bound/d obs_{w, t} for t=1:T.
 void compute_obs_deriv(int word, gsl_vector* word_counts,
-                       gsl_vector* total_counts, sslm_var* var,
-                       gsl_matrix* mean_deriv_mtx, gsl_vector* deriv);
+		gsl_vector* total_counts, sslm_var* var, gsl_matrix* mean_deriv_mtx,
+		gsl_vector* deriv);
 
 // update observations
-void update_obs(gsl_matrix* word_counts, gsl_vector* totals,
-                sslm_var* var);
+void update_obs(gsl_matrix* word_counts, gsl_vector* totals, sslm_var* var);
 
 // log probability bound
-double compute_bound(gsl_matrix* word_counts, gsl_vector* totals,
-                     sslm_var* var);
-
+double compute_bound(gsl_matrix* word_counts, gsl_vector* totals, sslm_var* var);
 
 // fit variational distribution
 double fit_sslm(sslm_var* var, gsl_matrix* word_counts);

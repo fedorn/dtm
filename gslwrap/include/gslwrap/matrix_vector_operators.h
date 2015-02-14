@@ -26,21 +26,21 @@
 namespace gsl
 {
 
-inline
-vector_float operator*(const matrix_float& m, const vector_float& v)
-{
-	vector_float y(m.get_rows());
-	gsl_blas_sgemv(CblasNoTrans, 1.0, m.gslobj(), v.gslobj(), 0.0, y.gslobj());
-	return y;
-}
+	inline
+	vector_float operator*(const matrix_float& m, const vector_float& v)
+	{
+		vector_float y(m.get_rows());
+		gsl_blas_sgemv(CblasNoTrans, 1.0, m.gslobj(), v.gslobj(), 0.0, y.gslobj());
+		return y;
+	}
 
-inline
-vector operator*(const matrix& m, const vector& v)
-{
-	vector y(m.get_rows());
-	gsl_blas_dgemv(CblasNoTrans, 1.0, m.gslobj(), v.gslobj(), 0.0, y.gslobj());
-	return y;
-}
+	inline
+	vector operator*(const matrix& m, const vector& v)
+	{
+		vector y(m.get_rows());
+		gsl_blas_dgemv(CblasNoTrans, 1.0, m.gslobj(), v.gslobj(), 0.0, y.gslobj());
+		return y;
+	}
 
 }
 

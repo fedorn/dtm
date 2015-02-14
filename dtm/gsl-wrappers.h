@@ -25,20 +25,28 @@
 double safe_log(double);
 double log_sum(double, double);
 
-static inline double vget(const gsl_vector* v, int i)
-{ return(gsl_vector_get(v, i)); };
+static inline double vget(const gsl_vector* v, int i) {
+	return (gsl_vector_get(v, i));
+}
+;
 
-static inline void vset(gsl_vector* v, int i, double x)
-{ gsl_vector_set(v, i, x); };
+static inline void vset(gsl_vector* v, int i, double x) {
+	gsl_vector_set(v, i, x);
+}
+;
 
 // Increment a vector element by a double.
 void vinc(gsl_vector*, int, double);
 
-static inline double mget(const gsl_matrix* m, int i, int j)
-{ return(gsl_matrix_get(m, i, j)); };
+static inline double mget(const gsl_matrix* m, int i, int j) {
+	return (gsl_matrix_get(m, i, j));
+}
+;
 
-static inline void mset(gsl_matrix* m, int i, int j, double x)
-{ gsl_matrix_set(m, i, j, x); };
+static inline void mset(gsl_matrix* m, int i, int j, double x) {
+	gsl_matrix_set(m, i, j, x);
+}
+;
 
 void msetcol(gsl_matrix* m, int r, const gsl_vector* val);
 
@@ -73,22 +81,16 @@ void choose_k_from_n(int k, int n, int* result);
 void log_normalize(gsl_vector* x);
 void normalize(gsl_vector* x);
 
-void optimize(int dim,
-              gsl_vector* x,
-              void* params,
-              void (*fdf)(const gsl_vector*, void*, double*, gsl_vector*),
-              void (*df)(const gsl_vector*, void*, gsl_vector*),
-              double (*f)(const gsl_vector*, void*));
+void optimize(int dim, gsl_vector* x, void* params,
+		void (*fdf)(const gsl_vector*, void*, double*, gsl_vector*),
+		void (*df)(const gsl_vector*, void*, gsl_vector*),
+		double (*f)(const gsl_vector*, void*));
 
-void optimize_fdf(int dim,
-                  gsl_vector* x,
-                  void* params,
-                  void (*fdf)(const gsl_vector*, void*, double*, gsl_vector*),
-                  void (*df)(const gsl_vector*, void*, gsl_vector*),
-                  double (*f)(const gsl_vector*, void*),
-                  double* f_val,
-                  double* conv_val,
-                  int* niter);
+void optimize_fdf(int dim, gsl_vector* x, void* params,
+		void (*fdf)(const gsl_vector*, void*, double*, gsl_vector*),
+		void (*df)(const gsl_vector*, void*, gsl_vector*),
+		double (*f)(const gsl_vector*, void*), double* f_val, double* conv_val,
+		int* niter);
 
 void log_write(FILE* f, char* string);
 int directory_exist(const char *dname);

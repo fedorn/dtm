@@ -29,12 +29,12 @@ void params_write_double(FILE *, char *, double);
 
 void params_read_gsl_vector(FILE* f, char* name, gsl_vector** x);
 
-void params_write_gsl_vector(FILE *, char* , gsl_vector *);
+void params_write_gsl_vector(FILE *, char*, gsl_vector *);
 
-void params_write_gsl_vector_multiline(FILE *, char* , gsl_vector *);
+void params_write_gsl_vector_multiline(FILE *, char*, gsl_vector *);
 
-void params_write_gsl_matrix(FILE *, char* , gsl_matrix *);
+void params_write_gsl_matrix(FILE *, char*, gsl_matrix *);
 
-void params_write_sparse_gsl_matrix(FILE *, char* , gsl_matrix *);
+void params_write_sparse_gsl_matrix(FILE *, char*, gsl_matrix *);
 
 #endif

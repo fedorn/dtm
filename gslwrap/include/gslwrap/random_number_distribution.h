@@ -24,36 +24,36 @@
 namespace gsl
 {
 
-class random_number_distribution
-{
- public:
-	random_number_distribution(const random_generator& _generator) : generator(_generator){;}
+	class random_number_distribution
+	{
+	public:
+		random_number_distribution(const random_generator& _generator) : generator(_generator) {;}
 
-	//Methods:
-	virtual double get()=0;
-	virtual double pdf(const double& x)=0;
-	virtual ~random_number_distribution()
+		//Methods:
+		virtual double get()=0;
+		virtual double pdf(const double& x)=0;
+		virtual ~random_number_distribution()
 		{
 			;
 		}
- protected:
-	random_generator generator;
-};
+	protected:
+		random_generator generator;
+	};
 
-class gaussian_random : public random_number_distribution
-{
- public:
-	gaussian_random(const random_generator& _generator, const double& _sigma=1.0) : random_number_distribution(_generator), sigma(_sigma){;}
+	class gaussian_random : public random_number_distribution
+	{
+	public:
+		gaussian_random(const random_generator& _generator, const double& _sigma=1.0) : random_number_distribution(_generator), sigma(_sigma) {;}
 
-	//methods:
-	double get(){return gsl_ran_gaussian(generator.gslobj(), sigma);}
-	double get(double _sigma){return gsl_ran_gaussian(generator.gslobj(), _sigma);}
-	double pdf(const double& x){return gsl_ran_gaussian_pdf(x, sigma);}
-	
-	double ratio_method(){return gsl_ran_gaussian_ratio_method(generator.gslobj(), sigma);}
- protected:
-	double sigma;
-};
+		//methods:
+		double get() {return gsl_ran_gaussian(generator.gslobj(), sigma);}
+		double get(double _sigma) {return gsl_ran_gaussian(generator.gslobj(), _sigma);}
+		double pdf(const double& x) {return gsl_ran_gaussian_pdf(x, sigma);}
+
+		double ratio_method() {return gsl_ran_gaussian_ratio_method(generator.gslobj(), sigma);}
+	protected:
+		double sigma;
+	};
 
 }
 

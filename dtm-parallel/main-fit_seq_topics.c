@@ -8,9 +8,7 @@
 #include "main.h"
 #include <gsl/gsl_matrix.h>
 
-DEFINE_string(sentinel_filename,
-	      "",
-	      "");
+DEFINE_string(sentinel_filename, "", "");
 
 DECLARE_string(outname);
 DECLARE_string(root_directory);
@@ -31,16 +29,18 @@ DECLARE_double(alpha);
  */
 
 int main(int argc, char* argv[]) {
-  // Initialize the flag objects.
-  //    InitFlags(argc, argv);
-  google::ParseCommandLineFlags(&argc, &argv, 0);
-  
-  // mode for fitting a dynamic topic model
-  double lhood = dtm::fit_lda_seq_st();
-  dtm::CreateSentinel(FLAGS_sentinel_filename,
-		      lhood);
-  printf("... Job complete.\n");
+	// Initialize the flag objects.
+	//    InitFlags(argc, argv);
+	google
+	::ParseCommandLineFlags(&argc, &argv, 0);
 
+	// mode for fitting a dynamic topic model
+	double lhood = dtm
+	::fit_lda_seq_st();
+	dtm
+	::CreateSentinel(FLAGS_sentinel_filename,
+			lhood);
+	printf("... Job complete.\n");
 
-  return(0);
+	return (0);
 }

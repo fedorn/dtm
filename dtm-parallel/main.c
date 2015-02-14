@@ -52,47 +52,47 @@ static bool fit_dtm() {
   }
 
   // Initialize (a few iterations of LDA fitting)
-  outlog("%s","### INITIALIZING MODEL FROM LDA ###\n");
-  bool success = true;
+  outlog("%s", "### INITIALIZING MODEL FROM LDA ###\n");
+bool success = true;
 
-  vector<int> topic_boundaries;
-  CreateTopicBoundaries(FLAGS_ntopics,
-			FLAGS_number_tasks,
-			&topic_boundaries);
+vector<int> topic_boundaries;
+CreateTopicBoundaries(FLAGS_ntopics,
+		FLAGS_number_tasks,
+		&topic_boundaries);
 
-  if (FLAGS_resume_stage != "doc"
-      && FLAGS_resume_stage != "topic") {
-    success = RunParallelLDA(topic_boundaries);
-  }
+if (FLAGS_resume_stage != "doc"
+		&& FLAGS_resume_stage != "topic") {
+	success = RunParallelLDA(topic_boundaries);
+}
 
-  if (success) {
-    printf("... Done");
-  } else {
-    printf("... Failed");
-  }
-  
-  // !!! make this an option
-  // Read in the corpus so we know how many terms.
-  if (success) {
-    success = FitParallelLDASeq(topic_boundaries);
-  }
+if (success) {
+	printf("... Done");
+} else {
+	printf("... Failed");
+}
 
-  return success;
+// !!! make this an option
+// Read in the corpus so we know how many terms.
+if (success) {
+	success = FitParallelLDASeq(topic_boundaries);
+}
+
+return success;
 }
 
 } // namespace dtm
 
 using namespace dtm;
 
-int main(int argc, char* argv[])
-{
-  // Initialize the flag objects.
-  //    InitFlags(argc, argv);
-  google::ParseCommandLineFlags(&argc, &argv, 0);
-  
-  // usage: main (sums corpus_sequence|fit param|time params)
-  
-  bool success = fit_dtm();
+int main(int argc, char* argv[]) {
+ // Initialize the flag objects.
+ //    InitFlags(argc, argv);
+google
+::ParseCommandLineFlags(&argc, &argv, 0);
 
-  return(!success);
+  // usage: main (sums corpus_sequence|fit param|time params)
+
+bool success = fit_dtm();
+
+return (!success);
 }

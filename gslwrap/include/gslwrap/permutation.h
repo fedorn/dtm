@@ -22,20 +22,20 @@
 
 namespace gsl
 {
-class permutation
-{
-	friend class matrix;
-	friend class matrix_float;
-	friend class matrix_int;
-
-	gsl_permutation *gsldata;
-public:
-	permutation(size_t n,bool clear=true)
+	class permutation
 	{
-		gsldata=(clear ? gsl_permutation_calloc(n) : gsl_permutation_alloc(n));
-	}
-	permutation():gsldata(NULL){;}
-	void resize(size_t n){gsldata= gsl_permutation_calloc(n);}
-};
+		friend class matrix;
+		friend class matrix_float;
+		friend class matrix_int;
+
+		gsl_permutation *gsldata;
+	public:
+		permutation(size_t n,bool clear=true)
+		{
+			gsldata=(clear ? gsl_permutation_calloc(n) : gsl_permutation_alloc(n));
+		}
+		permutation():gsldata(NULL) {;}
+		void resize(size_t n) {gsldata= gsl_permutation_calloc(n);}
+	};
 }
 #endif// _permutation_h

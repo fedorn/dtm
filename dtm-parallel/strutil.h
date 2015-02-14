@@ -19,10 +19,10 @@ using namespace std;
 string StringPrintf(const char* format, ...);
 
 void SplitStringUsing(const string& s1,
-		      const char* delimiter,
-		      vector<string>* result);
+		const char* delimiter,
+		vector<string>* result);
 
 string JoinStringUsing(const vector<string>& parts,
-		       const char* delimiter);
+		const char* delimiter);
 
 #endif

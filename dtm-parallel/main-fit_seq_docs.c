@@ -3,9 +3,7 @@
 #include "main.h"
 #include "c2_lib.h"
 
-DEFINE_string(sentinel_filename,
-	      "",
-	      "");
+DEFINE_string(sentinel_filename, "", "");
 
 DECLARE_string(outname);
 DECLARE_string(root_directory);
@@ -23,7 +21,6 @@ DECLARE_double(alpha);
  *
  */
 
-
 /*
  * fit a model from data
  *
@@ -38,17 +35,16 @@ using namespace dtm;
  *
  */
 
-int main(int argc, char* argv[])
-{
-  // Initialize the flag objects.
-  //    InitFlags(argc, argv);
-  google::ParseCommandLineFlags(&argc, &argv, 0);
+int main(int argc, char* argv[]) {
+	// Initialize the flag objects.
+	//    InitFlags(argc, argv);
+	google
+	::ParseCommandLineFlags(&argc, &argv, 0);
 
-  double lhood = fit_lda_seq_sd();
+	double lhood = fit_lda_seq_sd();
 
-  CreateSentinel(FLAGS_sentinel_filename.c_str(),
-		 lhood);
-  printf("... Job complete.\n");
-  
-  return(0);
+	CreateSentinel(FLAGS_sentinel_filename.c_str(), lhood);
+	printf("... Job complete.\n");
+
+	return (0);
 }
