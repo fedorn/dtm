@@ -950,6 +950,12 @@ double fit_lda_seq(lda_seq* m, const corpus_seq_t* data,
 				heldout_bound, convergence);
 		iter++;
 	}
+	gsl_matrix_free(gammas);
+	gsl_matrix_free(lhoods);
+	if (heldout != NULL) {
+		gsl_matrix_free(heldout_gammas);
+		gsl_matrix_free(heldout_lhoods);
+	}
 	for (k = 0; k < K; k++) {
 		gsl_matrix_free(topic_suffstats[k]);
 	}
