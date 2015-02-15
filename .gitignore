@@ -31,3 +31,4 @@ local.properties
 *.o
 dtm/main
 dtm/example/model_run/
+dtm/example_small/model_run/
