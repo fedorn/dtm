@@ -45,7 +45,7 @@ sslm_var* sslm_var_alloc(int W, int T) {
 	var->mean = gsl_matrix_calloc(W, T + 1);
 	var->variance = gsl_matrix_calloc(W, T + 1);
 
-	var->w_phi_l = gsl_matrix_calloc(W, T);
+//	var->w_phi_l = gsl_matrix_calloc(W, T);
 	var->m_update_coeff = gsl_matrix_calloc(W, T);
 	var->m_update_coeff_g = gsl_matrix_calloc(W, T);
 
