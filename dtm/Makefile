@@ -32,6 +32,7 @@ gflags:	${LIB}/util/gflags-1.1/src/gflags.cc
 main:	$(LOBJECTS) gflags
 	$(CC) $(CFLAGS) $(LOBJECTS) $(GFLAGS) -o main $(LDFLAGS)
 
+dbg: CFLAGS += -DDEBUG -g
 dbg:	$(LOBJECTS) gflags
 	$(CC) $(GDB_CFLAGS) $(LOBJECTS) $(GFLAGS) -o main $(LDFLAGS)
 
