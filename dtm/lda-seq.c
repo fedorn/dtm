@@ -1169,10 +1169,10 @@ void free_lda_seq(lda_seq* model, corpus_seq_t* data) {
 	inf_var_free(model->influence, data);
 	for (int k = 0; k < K; k++) {
 		gsl_matrix_free(model->influence_sum_lgl[k]);
-		gsl_matrix_free(model->topic[k]->w_phi_l);
+//		gsl_matrix_free(model->topic[k]->w_phi_l);
 		gsl_matrix_free(model->topic[k]->w_phi_sum);
 		gsl_matrix_free(model->topic[k]->w_phi_l_sq);
-		sslm_var_free(model->topic[K]);
+		sslm_var_free(model->topic[k]);
 	}
 	free(model->influence_sum_lgl);
 	free(model->topic);

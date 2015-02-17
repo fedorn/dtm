@@ -53,9 +53,8 @@ sslm_var* sslm_var_alloc(int W, int T) {
 }
 
 void sslm_var_free(sslm_var* var) {
-	free(scaled_influence);
+//	free(scaled_influence);
 
-	// TODO(sgerrish): Free these parameters.
 	gsl_matrix_free(var->obs);
 	gsl_matrix_free(var->e_log_prob);
 	gsl_matrix_free(var->mean);
