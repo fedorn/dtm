@@ -21,13 +21,13 @@ LOBJECTS = ss-lm.o gsl-wrappers.o data.o param.o util.o lda-seq.o	\
 
 GFLAGS = gflags.o gflags_reporting.o gflags_completions.o
 
-all:	main
+all: main
 
 gflags:	${LIB}/util/gflags-1.1/src/gflags.cc
 	$(CC) -c $(CFLAGS) \
-        ${LIB}/util/gflags-1.1/src/gflags.cc \
-        ${LIB}/util/gflags-1.1/src/gflags_reporting.cc \
-        ${LIB}/util/gflags-1.1/src/gflags_completions.cc
+		${LIB}/util/gflags-1.1/src/gflags.cc \
+		${LIB}/util/gflags-1.1/src/gflags_reporting.cc \
+		${LIB}/util/gflags-1.1/src/gflags_completions.cc
 
 main:	$(LOBJECTS) gflags
 	$(CC) $(CFLAGS) $(LOBJECTS) $(GFLAGS) -o main $(LDFLAGS)
