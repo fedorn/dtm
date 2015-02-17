@@ -184,7 +184,28 @@ corpus_seq_t* read_corpus_seq(const char* name) {
 	}
 	corpus_seq->max_nterms = compute_max_nterms(corpus_seq);
 	outlog("read corpus of length %d\n", corpus_seq->len);
+	//TODO free raw_corpus but no raw_corpus->doc[doc_idx]
 	return (corpus_seq);
+}
+
+void free_corpus_seq(corpus_seq_t* corpus_seq) {
+	for (int i = 0; i < corpus_seq->len; ++i) {
+		for (int j = 0; j < corpus_seq->corpus[i]->ndocs; j++) {
+			free_doc(corpus_seq->corpus[i]->doc[j]);
+		}
+		free(corpus_seq->corpus[i]->doc);
+		free(corpus_seq->corpus[i]);
+	}
+	free(corpus_seq->corpus);
+	free(corpus_seq);
+}
+
+void free_doc(doc_t* doc) {
+	free(doc->word);
+	free(doc->count);
+	free(doc->lambda);
+	free(doc->log_likelihoods);
+	free(doc);
 }
 
 /*

@@ -162,5 +162,7 @@ void write_corpus_seq(corpus_seq_t* c, char* name);
 corpus_seq_t* make_corpus_seq_subset(corpus_seq_t* all, int start, int end);
 corpus_t* collapse_corpus_seq(corpus_seq_t* c);
 double* NewScaledInfluence(int size);
+void free_corpus_seq(corpus_seq_t* corpus_seq);
+void free_doc(doc_t* doc);
 
 #endif

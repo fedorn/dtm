@@ -141,6 +141,7 @@ void fit_dtm(int min_time, int max_time) {
 
 	if (max_time < 0) {
 		free_lda_seq(model_seq, data_subset);
+		free_corpus_seq(data_full);
 		return;
 	}
 
@@ -175,6 +176,7 @@ void fit_dtm(int min_time, int max_time) {
 	for (int d = 0; d < data_full->corpus[max_time]->ndocs; ++d) {
 		fprintf(post_file, "%f\n", table[d]);
 	}
+	free_corpus_seq(data_full);
 }
 
 /*
