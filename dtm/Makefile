@@ -36,7 +36,7 @@ dbg: CFLAGS += -DDEBUG -g
 dbg:	$(LOBJECTS) gflags
 	$(CC) $(GDB_CFLAGS) $(LOBJECTS) $(GFLAGS) -o main $(LDFLAGS)
 
-dbg-mac: dbg
+dbg-darwin: dbg
 	dsymutil main
 
 clean:
