@@ -1171,7 +1171,7 @@ double fit_sslm(sslm_var* var, gsl_matrix* counts) {
 
 	// free convenience parameters (there are a lot of them)
 
-	free(totals);
+	gsl_vector_free(totals);
 	sslm_inference_free(var);
 
 	return (bound);
