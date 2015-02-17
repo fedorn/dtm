@@ -67,6 +67,7 @@ typedef struct lda_suff_stats {
 lda* new_lda_model(int ntopics, int nterms);
 void free_lda_model(lda* m);
 lda_suff_stats* new_lda_suff_stats(lda* model);
+void free_lda_suff_stats(lda_suff_stats* ss);
 void reset_lda_suff_stats(lda_suff_stats* ss);
 lda_post* new_lda_post(int ntopics, int max_length);
 void free_lda_post(lda_post* p);

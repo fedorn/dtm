@@ -422,6 +422,11 @@ lda_suff_stats* new_lda_suff_stats(lda* model) {
 	return (ss);
 }
 
+void free_lda_suff_stats(lda_suff_stats* ss) {
+	gsl_matrix_free(ss->topics_ss);
+	free(ss);
+}
+
 void reset_lda_suff_stats(lda_suff_stats* ss) {
 	gsl_matrix_set_all(ss->topics_ss, 0.0);
 }

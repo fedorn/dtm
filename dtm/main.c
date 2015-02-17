@@ -66,12 +66,13 @@ void fit_dtm(int min_time, int max_time) {
 	corpus_t* initial_lda_data = read_corpus(FLAGS_corpus_prefix.c_str());
 
 	gsl_matrix* topics_ss;
+	lda_suff_stats* lda_ss;
 	// !!! make this an option
 	if (FLAGS_initialize_lda) {
 		lda* lda_model = new_lda_model(FLAGS_ntopics, initial_lda_data->nterms);
 		gsl_vector_set_all(lda_model->alpha, FLAGS_alpha);
 
-		lda_suff_stats* lda_ss = new_lda_suff_stats(lda_model);
+		lda_ss = new_lda_suff_stats(lda_model);
 		// initialize_lda_ss_from_data(initial_lda_data, lda_ss);
 		initialize_lda_ss_from_random(initial_lda_data, lda_ss);
 		// sgerrish: Why do we only define the topics once?
@@ -132,6 +133,9 @@ void fit_dtm(int min_time, int max_time) {
 			data_subset->len, FLAGS_ntopics);
 	init_lda_seq_from_ss(model_seq, FLAGS_top_chain_var, FLAGS_top_obs_var,
 			FLAGS_alpha, topics_ss);
+	if (FLAGS_initialize_lda) {
+		free_lda_suff_stats(lda_ss);
+	}
 
 	fit_lda_seq(model_seq, data_subset, NULL, run_dir);
 
