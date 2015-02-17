@@ -1145,15 +1145,15 @@ lda_seq* new_lda_seq(corpus_seq_t* data, int W, int T, int K) {
 	for (int k = 0; k < K; k++) {
 		//      model->w_phi_l = (gsl_matrix*) malloc(sizeof(gsl_matrix));
 		// model->w_phi_l_sq = (gsl_matrix*) malloc(sizeof(gsl_matrix*));
-		model->influence_sum_lgl[k] = gsl_matrix_calloc(W, T);
+//		model->influence_sum_lgl[k] = gsl_matrix_calloc(W, T);
 
 		model->topic[k] = sslm_var_alloc(W, T);
 		if (k < FLAGS_fix_topics) {
 			model->topic[k]->chain_variance = 1e-10;
 		}
-		model->topic[k]->w_phi_l = gsl_matrix_calloc(W, T);
-		model->topic[k]->w_phi_sum = gsl_matrix_calloc(W, T);
-		model->topic[k]->w_phi_l_sq = gsl_matrix_calloc(W, T);
+//		model->topic[k]->w_phi_l = gsl_matrix_calloc(W, T);
+//		model->topic[k]->w_phi_sum = gsl_matrix_calloc(W, T);
+//		model->topic[k]->w_phi_l_sq = gsl_matrix_calloc(W, T);
 	}
 	model->influence = inf_var_alloc(K, data);
 
@@ -1163,12 +1163,10 @@ lda_seq* new_lda_seq(corpus_seq_t* data, int W, int T, int K) {
 void free_lda_seq(lda_seq* model, corpus_seq_t* data) {
 
 	int K = model->ntopics;
-	int W = model->nterms;
-	int T = model->nseq;
 
 	inf_var_free(model->influence, data);
 	for (int k = 0; k < K; k++) {
-		gsl_matrix_free(model->influence_sum_lgl[k]);
+//		gsl_matrix_free(model->influence_sum_lgl[k]);
 //		gsl_matrix_free(model->topic[k]->w_phi_l);
 		gsl_matrix_free(model->topic[k]->w_phi_sum);
 		gsl_matrix_free(model->topic[k]->w_phi_l_sq);
