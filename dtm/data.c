@@ -184,7 +184,10 @@ corpus_seq_t* read_corpus_seq(const char* name) {
 	}
 	corpus_seq->max_nterms = compute_max_nterms(corpus_seq);
 	outlog("read corpus of length %d\n", corpus_seq->len);
-	//TODO free raw_corpus but no raw_corpus->doc[doc_idx]
+
+	free(raw_corpus->doc);
+	free(raw_corpus);
+
 	return (corpus_seq);
 }
 
