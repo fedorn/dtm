@@ -32,3 +32,4 @@ local.properties
 dtm/main
 dtm/example/model_run/
 dtm/example_small/model_run/
+dtm/main.dSYM
