@@ -82,6 +82,7 @@ void fit_dtm(int min_time, int max_time) {
 		LDA_INFERENCE_MAX_ITER = 25;
 		lda_em(lda_model, lda_ss, initial_lda_data, FLAGS_lda_max_em_iter,
 				name);
+		free_lda_model(lda_model);
 		sprintf(name, "%s/initial-lda-ss.dat", run_dir);
 
 		write_lda_suff_stats(lda_ss, name);
