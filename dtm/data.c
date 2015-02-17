@@ -190,14 +190,18 @@ corpus_seq_t* read_corpus_seq(const char* name) {
 
 void free_corpus_seq(corpus_seq_t* corpus_seq) {
 	for (int i = 0; i < corpus_seq->len; ++i) {
-		for (int j = 0; j < corpus_seq->corpus[i]->ndocs; j++) {
-			free_doc(corpus_seq->corpus[i]->doc[j]);
-		}
-		free(corpus_seq->corpus[i]->doc);
-		free(corpus_seq->corpus[i]);
+		free_corpus(corpus_seq->corpus[i]);
 	}
 	free(corpus_seq->corpus);
 	free(corpus_seq);
+}
+
+void free_corpus(corpus_t* c) {
+	for (int j = 0; j < c->ndocs; j++) {
+		free_doc(c->doc[j]);
+	}
+	free(c->doc);
+	free(c);
 }
 
 void free_doc(doc_t* doc) {

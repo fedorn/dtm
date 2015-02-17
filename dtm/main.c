@@ -83,6 +83,7 @@ void fit_dtm(int min_time, int max_time) {
 		LDA_INFERENCE_MAX_ITER = 25;
 		lda_em(lda_model, lda_ss, initial_lda_data, FLAGS_lda_max_em_iter,
 				name);
+		free_corpus(initial_lda_data);
 		free_lda_model(lda_model);
 		sprintf(name, "%s/initial-lda-ss.dat", run_dir);
 
@@ -91,6 +92,7 @@ void fit_dtm(int min_time, int max_time) {
 	} else {
 		printf("loading %d terms..\n", initial_lda_data->nterms);
 		topics_ss = gsl_matrix_calloc(initial_lda_data->nterms, FLAGS_ntopics);
+		free_corpus(initial_lda_data);
 		sprintf(name, "%s/initial-lda-ss.dat", FLAGS_outname.c_str());
 		mtx_fscanf(name, topics_ss);
 	}
