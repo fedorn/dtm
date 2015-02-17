@@ -1172,6 +1172,7 @@ void free_lda_seq(lda_seq* model, corpus_seq_t* data) {
 		gsl_matrix_free(model->topic[k]->w_phi_l);
 		gsl_matrix_free(model->topic[k]->w_phi_sum);
 		gsl_matrix_free(model->topic[k]->w_phi_l_sq);
+		sslm_var_free(model->topic[K]);
 	}
 	free(model->influence_sum_lgl);
 	free(model->topic);

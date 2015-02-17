@@ -39,6 +39,8 @@
 // allocate new state space language model variational posterior
 sslm_var* sslm_var_alloc(int W, int T);
 
+void sslm_var_free(sslm_var* var);
+
 // allocate extra parameters for inference
 void sslm_inference_alloc(sslm_var* var);
 

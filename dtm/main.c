@@ -135,6 +135,7 @@ void fit_dtm(int min_time, int max_time) {
 	fit_lda_seq(model_seq, data_subset, NULL, run_dir);
 
 	if (max_time < 0) {
+		free_lda_seq(model_seq, data_subset);
 		return;
 	}
 
