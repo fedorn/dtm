@@ -340,6 +340,7 @@ double lda_e_step(lda* model, corpus_t* data, lda_suff_stats* ss) {
 	}
 
 	// !!! FREE POSTERIOR
+	free_lda_post(p);
 
 	return (lhood);
 }
