@@ -464,6 +464,7 @@ void initialize_lda_ss_from_random(corpus_t* data, lda_suff_stats* ss) {
 			vset(&topic, n, gsl_rng_uniform(r) + 0.5 / data->ndocs + 4.0);
 		}
 	}
+	gsl_rng_free(r);
 }
 
 /*
