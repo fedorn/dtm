@@ -7,7 +7,7 @@ LOCAL_DIR=../local
 
 CFLAGS = -I ${LIB} -I ${LIB}/math -I ${GSLWRAP_LIB}/include -I	\
   ${GSLWRAP_LIB}/include/gslwrap -I ${LOCAL_DIR}/include -I	\
-  ${LIB}/util/gflags-1.1/src/gflags
+  ${LIB}/util/gflags-1.1/src/gflags -O3
 
 GDB_CFLAGS = -ggdb -I ${LIB} -I ${LIB}/math -I ${GSLWRAP_LIB}/include	\
   -I ${GSLWRAP_LIB}/include/gslwrap -I ${LOCAL_DIR}/include -I		\
