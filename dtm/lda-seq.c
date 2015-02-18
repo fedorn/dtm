@@ -85,8 +85,6 @@ inf_var* inf_var_alloc(int number_topics, corpus_seq_t* corpus_seq) {
 }
 
 void inf_var_free(inf_var* inf_var_ptr, corpus_seq_t* corpus_seq) {
-	delete scaled_influence;
-
 	int i = 0;
 	for (i = 0; i < corpus_seq->len; ++i) {
 		corpus_t* corpus = corpus_seq->corpus[i];
